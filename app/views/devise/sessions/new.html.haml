@@ -1,0 +1,21 @@
+.session-wrapper
+  = render "shared/header"
+  .center-container
+    .login-container
+      %h1.login-title
+        ログイン
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login-form"}) do |f|
+        .login-form__email
+          = f.label :email, class: "login-label"
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "login-input", id: "login-email", placeholder: "Email"
+        .login-form__password
+          = f.label :password, class: "login-label"
+          %br/
+          = f.password_field :password, autocomplete: "current-password", class: "login-input", id: "login-password", placeholder: "Password"
+        .login-form__test-user
+          = check_box_tag :test_user, "", false, class: "test-user-check"
+          = label_tag :test_user, "テストユーザーでログイン", class: "test-user-label"
+        .login-form__btn
+          = f.submit "ログイン", class: "login-btn"
+        = render "devise/shared/links"

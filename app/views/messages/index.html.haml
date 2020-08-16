@@ -1,0 +1,59 @@
+.messages-wrapper
+  = render "shared/header"
+  - if @request.condition == "transaction_in_progress"
+    %main.messages-main
+      .messages-container.message-margin
+        = render partial: "message", collection: @messages 
+      .message-foot
+        .transaction-container
+          - if (@request.client_id == current_user.id)
+            .request-complete
+              = link_to "取引完了", pay_confirm_request_path(@request.id), class: "request-complete__btn"
+          - else
+            .dummy-box
+          .cancel-transaction
+            = link_to "取引中止", request_path(@request.id, type: "cancellation_application"), method: "patch", class: "cancel-transaction__btn", data: {confirm: "取引中止の申請を行なってもよろしいですか？"}
+        .message-input
+          = form_with model: [@request, @message], local: true, id: "message-form" do |f|
+            .message-send
+              .message-container
+                = f.label :picture, class: "message-container__label" do
+                  = fa_icon "picture-o", class: "message-container__icon"
+                  = f.file_field :picture, class: "message-container__picture", accept: "image/*"
+                = f.text_field :text, class: "message-container__text", placeholder: "メッセージを入力してください"
+              = f.submit "送信", class: "message-send-btn", id: "message-send-btn"
+  - elsif (@request.condition == "cancellation_application_cl" && @request.client_id == current_user.id) || (@request.condition == "cancellation_application_ct" && @request.contractor_id == current_user.id)
+    %main.cancellation-application-main
+      .cancellation-application-main-message
+        .cancellation-application-main-message__head
+          %p.cancellation-application-message
+            現在、本依頼は取引の中止を申請しております。
+        .cancellation-application-main-message__foot
+          .cancellation-application-sub
+            - if current_user.id == @request.client_id
+              %p.cancellation-application-sub-message
+                ※取引相手の返答をお待ちください。
+            - else
+              %p.cancellation-application-sub-message
+                ※依頼者の返答をお待ちください。
+          .cancellation-application-btn-form
+            = link_to "依頼一覧へ戻る", root_path, class: "list-back-btn"
+  - else
+    %main.cancellation-application-main
+      .cancellation-application-main-message
+        .cancellation-application-main-message__head
+          - if current_user.id == @request.client_id
+            %p.cancellation-application-message
+              取引相手から取引の中止が申請されております。
+          - else
+            %p.cancellation-application-message
+              依頼者から取引の中止が申請されております。
+        .cancellation-application-main-message__foot
+          .cancellation-application-sub
+            %p.cancellation-application-sub-message
+              ※以下より、取引中止についての回答を選択してください。
+          .cancellation-application-btn-form
+            .cancellation-application-btn-form__left
+              = link_to "拒否", request_path(@request.id, type: "transaction_in_progress"), method: :patch, class: "cancellation-application-btn cancellation-application-btn--decline"
+            .cancellation-application-btn-form__right
+              = link_to "承諾", request_path(@request.id, type: "now_accepting"), method: :patch, class: "cancellation-application-btn cancellation-application-btn--accept", data: {confirm: "取引を中止してもよろしいですか？"}

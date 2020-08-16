@@ -1,0 +1,68 @@
+.request-pay-main {
+  @include main-layout();
+}
+
+.request-pay-info {
+  padding-top: 50px;
+  &__head {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.pay-info-details {
+  &--card {
+    margin-top: 50px;
+  }
+}
+
+.pay-info-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.pay-info-table {
+  margin-top: 5px;
+  width: 600px;
+}
+
+.pay-info-th {
+  width: 30%;
+  &--request {
+    background-color: #c2f0fc;
+  }
+  &--card {
+    background-color: #F2F2F2;
+  }
+}
+
+.pay-info-th, .pay-info-td {
+  border: 1px solid black;
+  vertical-align: middle;
+}
+
+.pay-item, .pay-content {
+  padding: 10px;
+}
+
+.pay-content {
+  width: 400px;
+  word-wrap: break-word;
+}
+
+.pay-btn-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.pay-btn {
+  &--cancel {
+    @include btn-form($b-color: #1077F8, $height: 40px, $width: 150px);
+  }
+  &--ok {
+    @include btn-form($b-color: #FD0101, $height: 40px, $width: 150px);
+    margin-left: 100px;
+  }
+}

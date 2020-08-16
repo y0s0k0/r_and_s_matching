@@ -1,0 +1,45 @@
+.card-show-main {
+  @include main-layout();
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-show-info {
+  margin-top: 100px;
+}
+
+.card-show-table {
+  width: 500px;
+}
+
+.card-show-th {
+  background-color: #F2F2F2;
+  height: 50px;
+  width: 50%;
+}
+
+.card-show-th, .card-show-td {
+  border: 1px solid black;
+  vertical-align: middle;
+}
+
+.card-show-item, .card-show-content {
+  padding: 10px;
+}
+
+.card-show-btn-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.card-show-btn {
+  &--back {
+    @include btn-form($b-color: #1077F8, $height:40px, $width: 150px);
+  }
+  &--delete {
+    @include btn-form($b-color: #FD0101, $height:40px, $width: 150px);
+    margin-left: 100px;
+  }
+}

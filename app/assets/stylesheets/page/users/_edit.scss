@@ -1,0 +1,39 @@
+.user-avatar {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.user-avatar-display {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.user-avatar-choice {
+  &__label {
+    align-items: center;
+    background-color: #d4d7dd;
+    border: 1px dashed #A6A6A6;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    font-size: 14px;
+    height: 180px;
+    justify-content: center;
+    width: 150px;
+  }
+  &__input {
+    display: none;
+  }
+}
+
+.card-confirm {
+  margin-top: 40px;
+}
+
+.card-confirm-btn {
+  @include btn-form($b-color: #0779e4, $height: 35px, $width: 350px);
+}

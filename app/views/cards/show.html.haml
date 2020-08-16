@@ -1,0 +1,37 @@
+.card-show-wrapper
+  = render "shared/header"
+  %main.card-show-main
+    .card-show-info
+      .card-show-info__head
+        %table.card-show-table
+          %tr.card-show-tr
+            %th.card-show-th
+              %p.card-show-item カード番号
+            %td.card-show-td
+              %p.card-show-content
+                **** **** ****
+                %span.card-show-last4
+                  = @card_info.last4
+          %tr.card-show-tr
+            %th.card-show-th
+              %p.card-show-item カード名義
+            %td.card-show-td
+              %p.card-show-content
+                = @card_info.name
+          %tr.card-show-tr
+            %th.card-show-th
+              %p.card-show-item 有効期限
+            %td.card-show-td
+              %p.card-show-content
+                - if @card_info.exp_month.to_s.length != 2
+                  = format("%02d", @card_info.exp_month)
+                - else
+                  = @card_info.exp_month
+                %span /
+                = @card_info.exp_year % 100
+      .card-show-info__foot
+        .card-show-btn-form
+          .card-show-btn-form__left
+            = link_to "戻る", edit_user_path, class: "card-show-btn card-show-btn--back"
+          .card-show-btn-form__right
+            = link_to "削除", card_path, method: :delete, class: "card-show-btn card-show-btn--delete", data: {confirm: "クレジットカードの情報を削除しますがよろしいですか？"}

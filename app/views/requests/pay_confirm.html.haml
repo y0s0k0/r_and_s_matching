@@ -1,0 +1,61 @@
+.request-pay-wrapper
+  = render "shared/header"
+  %main.request-pay-main
+    .request-pay-info
+      .request-pay-info__head
+        .pay-info-details.pay-info-details--request
+          %p.pay-info-title.pay-info-title--request 支払い情報
+          %table.pay-info-table.pay-info-table--request
+            %tr.pay-info-tr.pay-info-tr--request
+              %th.pay-info-th.pay-info-th--request
+                %p.pay-item タイトル
+              %td.pay-info-td.pay-info-td--request
+                %p.pay-content
+                  = @request.title
+            %tr.pay-info-tr.pay-info-tr--request
+              %th.pay-info-th.pay-info-th--request
+                %p.pay-item 依頼内容
+              %td.pay-info-td.pay-info-td--request
+                %p.pay-content
+                  = @request.content
+            %tr.pay-info-tr.pay-info-tr--request
+              %th.pay-info-th.pay-info-th--request
+                %p.pay-item 支払い額
+              %td.pay-info-td.pay-info-td--request
+                %p.pay-content
+                  ¥
+                  = @request.reward
+        .pay-info-details.pay-info-details--card
+          %p.pay-info-title.pay-info-title--card クレジットカード情報
+          %table.pay-info-table.pay-info-table--card
+            %tr.pay-info-tr.pay-info-tr--card
+              %th.pay-info-th.pay-info-th--card
+                %p.pay-item カード番号
+              %td.pay-info-td.pay-info-td--card
+                %p.pay-content
+                  ************
+                  %span
+                    = @card_info.last4
+            %tr.pay-info-tr.pay-info-tr--card
+              %th.pay-info-th.pay-info-th--card
+                %p.pay-item カード名義
+              %td.pay-info-td.pay-info-td--card
+                %p.pay-content
+                  = @card_info.name
+            %tr.pay-info-tr.pay-info-tr--card
+              %th.pay-info-th.pay-info-th--card
+                %p.pay-item 有効期限
+              %td.pay-info-td.pay-info-td--card
+                %p.pay-content
+                  - if @card_info.exp_month.to_s.length != 2
+                    = format("%02d", @card_info.exp_month)
+                  - else
+                    = @card_info.exp_month
+                  %span /
+                  = @card_info.exp_year % 100
+      .request-pay-info__foot
+        .pay-btn-form
+          .pay-btn-form__left
+            = link_to "戻る", request_messages_path(@request.id), class: "pay-btn pay-btn--cancel"
+          .pay-btn-form__right
+            = link_to "支払う", pay_request_path, method: :post, class: "pay-btn pay-btn--ok", data: {confirm: "支払い(取引完了)を行いますがよろしいですか？"}

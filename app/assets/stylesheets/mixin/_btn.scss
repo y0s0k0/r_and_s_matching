@@ -1,0 +1,27 @@
+@mixin btn-form($b-color, $f-size: null, $height:null, $width: null) {
+  align-items: center;
+  background-color: $b-color;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: $f-size;
+  font-weight: bold;
+  height: $height;
+  justify-content: center;
+  width: $width;
+}
+
+@mixin top-btn-form($color) {
+  align-items: center;
+  background-color: $color;
+  border: inset 2px #888888;
+  border-radius: 25px;
+  display: flex;
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  justify-content: center;
+  width: 200px;
+}

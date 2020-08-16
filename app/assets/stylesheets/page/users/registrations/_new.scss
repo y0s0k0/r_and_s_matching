@@ -1,0 +1,47 @@
+.user-password-1 {
+  margin-top: 30px;
+}
+
+.user-password-1-head {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.user-password-1-foot {
+  &__input {
+    @include input-form(30px, 350px);
+  }
+}
+
+.user-password-2 {
+  margin-top: 30px;
+}
+
+.user-password-2-head {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.user-password-2-foot {
+  &__input {
+    @include input-form(30px, 350px);
+  }
+}
+
+.user-password-3 {
+  margin-top: 30px;
+}
+
+.user-password-3-head {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.user-password-3-foot {
+  &__input {
+    @include input-form(30px, 350px);
+  }
+}

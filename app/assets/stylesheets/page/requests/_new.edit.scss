@@ -1,0 +1,121 @@
+.request-form-main {
+  @include main-layout();
+}
+
+.request-form-input {
+  padding: 50px 10px 0;
+}
+
+.request-form-info-head {
+  @include request-form-layout-1();
+}
+
+.request-form-details-1 {
+  width: 50%;
+}
+
+.request-form-title {
+  &__head {
+    @include request-form-layout-2();
+  }
+  &__input {
+    @include input-form(30px, 400px);
+  }
+}
+
+.request-form-body {
+  margin-top: 50px;
+  &__head {
+    @include request-form-layout-2();
+  }
+  &__input {
+    @include input-form(150px, 400px);
+    padding: 5px 0 0 10px;
+  }
+}
+
+.request-form-details-2 {
+  @include request-form-layout-1();
+  flex-direction: column;
+  width: 50%;
+}
+
+.request-form-images {
+  &__head {
+    @include request-form-layout-2();
+  }
+  &__input {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.request-form-image-file {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.request-form-image-display {
+  display: flex;
+  justify-content: center;
+}
+
+.request-form-image-choice {
+  &__label {
+    align-items: center;
+    background-color: #e0e0e0;
+    border: 1px dashed #737373;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    height: 180px;
+    justify-content: center;
+    text-align: center;
+    width: 150px;
+  }
+  &__body {
+    display: none;
+  }
+}
+
+.set-reward {
+  &__head {
+    @include request-form-layout-2();
+  }
+  &__input {
+    @include input-form(30px, 250px);
+  }
+}
+
+.request-form-info-foot {
+  @include request-form-layout-1();
+  margin-top: 50px;
+}
+
+.request-form-tag {
+  width: 50%;
+  &__head {
+    @include request-form-layout-2();
+  }
+}
+
+.request-form-tag-name {
+  @include input-form(30px, 400px);
+}
+
+.request-btn {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  &__new {
+    @include btn-form(#42b883, 18px, 50px, 100%);
+  }
+  &__edit {
+    @include btn-form(#1077F8, 18px, 50px, 230px);
+  }
+  &__delete {
+    @include btn-form(#e42c64, 18px, 50px, 230px);
+  }
+}

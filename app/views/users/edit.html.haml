@@ -1,0 +1,39 @@
+.signup-wrapper
+  = render "shared/header"
+  %main.user-registration
+    .user-info
+      = form_with model: @user, local: true, html: {class: "user-registration-form"} do |f|
+        = render "shared/error_messages", model: f.object
+        .user-avatar
+          .user-avatar-head
+            %h2.avatar-title
+              プロフィール画像
+              %span.optional 任意
+          .user-avatar-foot
+            .user-avatar-display{id: "avatar-preview", data: {avatar: "#{f.object.avatar}"}}
+            .user-avatar-choice
+              = f.label :avatar, class: "user-avatar-choice__label", for: "user-avatar" do
+                %p
+                  画像を
+                  %br 選択してください
+              = f.file_field :avatar, class: "user-avatar-choice__input", id: "user-avatar", accept: "image/*"
+              = f.hidden_field :avatar_cache
+              = f.hidden_field :avatar_delete_instruction, class: "avatar-delete-instruction"
+        .user-nickname
+          .user-nickname-head
+            = f.label :nickname, class: "user-nickname-head__label"
+            %span (8文字以内)
+            %span.required 必須
+          .user-nickname-foot
+            = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "user-nickname-foot__input", placeholder: "Nickname"
+        .user-email
+          .field.user-email-head
+            = f.label :email, class: "user-email-head__label"
+            %span.required 必須
+          .field.user-email-foot
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "user-email-foot__input", placeholder: "Email"
+        - if @card
+          .card-confirm
+            = link_to "クレジットカード確認/削除", card_path(@card.id), class: "card-confirm-btn"
+        .actions.info-registration
+          = f.submit "変更する", class: "info-registration__btn"

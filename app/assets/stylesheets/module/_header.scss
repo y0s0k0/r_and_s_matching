@@ -1,0 +1,81 @@
+.header {
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  &__head {
+    align-items: center;
+    background-color: #1E344C;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__foot {
+    background-color: white;
+  }
+}
+
+.header-logo-container {
+  align-items: center;
+  background-color: #27496d;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  padding: 0px 20px;
+  width: 200px;
+}
+
+.app-logo {
+  height: 70px;
+}
+
+.header-menu {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 50px;
+  &__user {
+    color: white;
+    margin-right: 50px;
+  }
+  &__contract-projects {
+    @include btn-form($b-color: #d65a31, $height: 30px, $width: 80px);
+    font-weight: normal;
+    margin: 10px;
+  }
+  &__request-projects {
+    @include btn-form($b-color: #2f89fc, $height: 30px, $width: 80px);
+    font-weight: normal;
+    margin: 10px;
+  }
+  &__create-request {
+    @include btn-form($b-color: #42b883, $height: 30px, $width: 80px);
+    font-weight: normal;
+    margin: 10px;
+  }
+  &__edit {
+    color: white;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px;
+    text-align: center;
+  }
+  &__logout {
+    color: white;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px;
+    text-align: center;
+  }
+}
+
+.header-sub {
+  border-bottom: 2px solid #979797;
+  font-size: 35px;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 20px 0 8px;
+  text-align: center;
+}

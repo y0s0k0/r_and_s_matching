@@ -1,0 +1,67 @@
+.request-list
+  - if current_page?(root_path)
+    - input_requests = @requests
+  - elsif current_page?(contractor_list_requests_path)
+    - input_requests = @contractor_requests
+  - else
+    - input_requests = @client_requests
+  - input_requests.each do |i|
+    .request-container
+      .request-container-left.client-info
+        .client-info__avatar
+          - if i.client.avatar.present?
+            = image_tag i.client.avatar.url, class: "avatar-original"
+          - else
+            = image_tag "avatar-image.png", class: "avatar-default"
+        .client-info__name
+          %p
+            = i.client.nickname
+      .request-container-right
+        .request-info-head
+          .request-info-head__left
+            .request-title
+              %p.request-title-inner
+                タイトル：
+                = i.title
+            .request-content
+              %p.request-content-inner
+                依頼内容：
+                %br
+                  = i.content
+          .request-info-head__right
+            .request-img
+              - i.posts.each_with_index do |post, index|
+                - if post.image.present?
+                  = image_tag post.image.url, class: "request-img__#{index}"
+              - (3 - i.posts.length).times do |index|
+                = image_tag "no_image.jpg", class: "request-img__#{i.posts.length + index}"
+        .request-info-foot
+          .request-info-foot__left
+            %p.reward-info
+              報酬：￥#{i.reward.to_s(:delimited)}
+          .request-info-foot__center
+            %p.request-condition
+              依頼状況：#{i.condition_i18n}
+          .request-info-foot__right
+            - case i.condition_before_type_cast
+            - when 0
+              - if i.client_id == current_user.id
+                = link_to "変更/削除", edit_request_path(i.id), class: "order-btn"
+              - else
+                = link_to "依頼詳細", request_path(i.id), class: "order-btn"
+            - when 1, 2, 3
+              = link_to "連絡する", request_messages_path(i.id), class: "order-btn"
+            - else
+              %p.order-btn 取引完了
+        .other-info
+          .other-info__left
+            - i.tag_list.each do |tag|
+              - if current_page?(root_path) 
+                = link_to "##{tag}", root_path(tag_name: tag), class: "request-tag"
+              - elsif current_page?(contractor_list_requests_path)
+                = link_to "##{tag}", contractor_list_requests_path(tag_name: tag), class: "request-tag"
+              - else
+                = link_to "##{tag}", client_list_requests_path(tag_name: tag), class: "request-tag"
+          .other-info__right
+            %p.date-info
+              = l(i.created_at, format: :default)

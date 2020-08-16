@@ -1,0 +1,48 @@
+.field_with_errors {
+  > input, textarea {
+  @include error-highlight();
+  }
+}
+
+.data-alert {
+  border: 1px solid red;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.alert-head {
+  align-items: center;
+  background-color: #ffcac2;
+  display: flex;
+  justify-content: flex-start;
+  padding: 5px;
+}
+
+.alert-mark {
+  margin-left: 5px;
+  width: 25px;
+}
+
+.alert-title {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.alert-foot {
+  border-top: 1px solid red;
+  padding: 10px 5px;
+}
+
+.error-details {
+  margin-left: 5px;
+}
+
+.error-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.error-item {
+  padding: 2px 0;
+}

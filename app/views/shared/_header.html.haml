@@ -1,0 +1,49 @@
+%header.header
+  = render partial: "shared/message"
+  .header__head
+    .header-logo
+      - if user_signed_in?
+        = link_to root_path, class: "header-logo-container" do
+          = image_tag "app_logo.png", class: "app-logo"
+      - else
+        .header-logo-container
+          = image_tag "app_logo.png", class: "app-logo"
+    .header-menu
+      - if user_signed_in?
+        %p.header-menu__user
+          ログイン： 
+          = current_user.nickname
+        = link_to "請負案件", contractor_list_requests_path, class: "header-menu__contract-projects"
+        = link_to "依頼案件", client_list_requests_path, class: "header-menu__request-projects"
+        = link_to "新規依頼", new_request_path, class: "header-menu__create-request"
+        = link_to "登録情報確認/変更", edit_user_path(current_user.id), class: "header-menu__edit"
+        = link_to "ログアウト", destroy_user_session_path, method: "delete", class: "header-menu__logout"
+  - if user_signed_in?
+    .header__foot
+      - if controller_name == "registrations"
+        - request_header = "新規登録"
+      - elsif controller_name == "users"
+        - request_header = "登録情報確認/変更"
+      - elsif controller_name == "cards"
+        - if action_name == "new"
+          - request_header = "支払い情報"
+        - else
+          - request_header = "クレジットカード情報"
+      - elsif controller_name == "requests"
+        - if action_name == "index"
+          - request_header = "依頼一覧"
+        - if action_name == "new" || action_name == "create"
+          - request_header = "新規依頼の作成"
+        - if action_name == "edit" || action_name == "update"
+          - request_header = "依頼内容の修正"
+        - if action_name == "show"
+          - request_header = "依頼内容の確認"
+        - if action_name == "contractor_list"
+          - request_header = "請負案件一覧"
+        - if action_name == "client_list"
+          - request_header = "依頼案件一覧"
+        - if action_name == "pay_confirm"
+          - request_header = "支払い情報の確認"
+      - elsif controller_name == "messages"
+        - request_header = "チャット(依頼連絡用)"
+      %h1.header-sub #{request_header}

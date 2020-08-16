@@ -1,0 +1,56 @@
+%main.request-form-main
+  .request-form-input
+    = form_with model: @request, local: true, id: "request-form" do |f|
+      .request-form-errors
+        = render "shared/error_messages", model: f.object
+      .request-form-info-head
+        .request-form-details-1
+          .request-form-title
+            %h2.request-form-title__head
+              タイトル
+              %span.required 必須
+            = f.text_field :title, class: "request-form-title__input", placeholder: "25文字以内"
+          .request-form-body
+            %h2.request-form-body__head
+              依頼内容
+              %span.required 必須
+            = f.text_area :content, class: "request-form-body__input", placeholder: "200文字以内"
+        .request-form-details-2
+          .request-form-images
+            %h2.request-form-images__head
+              画像添付(※3つまで選択可)
+              %span.optional 任意
+            .request-form-images__input
+              = f.fields_for :posts do |p|
+                .request-form-image-file
+                  .request-form-image-display{id: "preview-#{p.index}", data: {image: "#{p.object.image}"}}
+                  .request-form-image-choice
+                    = p.label :image, class: "request-form-image-choice__label", id: "label-image-#{p.index}" do
+                      %p
+                        画像を
+                        %br 選択してください
+                    = p.file_field :image, class: "request-form-image-choice__body", data: {instruction: "null"}, value: p.index, accept: "image/*"
+                    = p.hidden_field :image_cache
+                    - unless current_page?(new_request_path)
+                      = p.hidden_field :delete_instruction, id: "delete-instruction-#{p.index}"
+          .set-reward
+            %h2.set-reward__head
+              報酬額(※300円〜)
+              %span.required 必須
+            = f.text_field :reward, class: "set-reward__input", placeholder: "例)1000  ※半角数字"
+      .request-form-info-foot
+        .request-form-tag
+          %h2.request-form-tag__head
+            タグ(※複数登録の際は「 , 」で区切ってください)
+            %span.optional 任意
+          .request-form-tag__input
+            = text_field_tag "request[tag_list]", @request.tag_list.join(','), class: "request-form-tag-name", placeholder: "例)生活,趣味  ※2種類まで登録可"
+        - unless action_name == "new" || action_name == "create"
+          .request-judge-params
+            = f.hidden_field :type, value: "edit"
+        .request-btn
+          - if action_name == "new" || action_name == "create"
+            = f.submit "依頼する", class: "request-form-btn request-btn__new"
+          - elsif action_name == "edit" || action_name == "update"
+            = f.submit "変更する", class: "request-form-btn request-btn__edit"
+            = link_to "削除する", request_path(@request.id), method: "delete", class: "request-btn__delete", data: {confirm: "本当に削除してもよろしいですか？"}

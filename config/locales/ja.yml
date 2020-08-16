@@ -1,0 +1,33 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: 新しいパスワード
+        password_confirmation: 新しいパスワード(確認)
+        current_password: 現在のパスワード
+        remember_me: 次回からパスワード入力を省く
+      request:
+        title: タイトル
+        content: 依頼内容
+        reward: 報酬額
+  time:
+    formats:
+      default: "%Y年%m月%d日(%a) %H:%M"
+  enums:
+    user:
+      avatar_delete_instruction:
+        nothing: なし
+        run: 実行
+    request:
+      condition:
+        now_accepting: 受付中
+        transaction_in_progress: 取引中
+        cancellation_application_cl: 中止申請(依頼者)
+        cancellation_application_ct: 中止申請(請負者)
+        complete: 済み
+    post:
+      delete_instruction:
+        nothing: なし
+        run: 実行

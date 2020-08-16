@@ -1,0 +1,36 @@
+.user-signup-wrapper
+  = render "shared/header"
+  %main.user-registration
+    .user-info
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "user-registration-form"}) do |f|
+        = render "shared/error_messages", model: f.object
+        .user-nickname
+          .user-nickname-head
+            = f.label :nickname, class: "user-nickname-head__label"
+            %span (8文字以内)
+            %span.required 必須
+          .user-nickname-foot
+            = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "user-nickname-foot__input", placeholder: "Nickname"
+        .user-email
+          .field.user-email-head
+            = f.label :email, class: "user-email-head__label"
+            %span.required 必須
+          .field.user-email-foot
+            = f.email_field :email, autofocus: true, autocomplete: "email", class: "user-email-foot__input", placeholder: "Email"
+        .user-password-1
+          .field.user-password-1-head
+            = f.label :password, class: "user-password-1-head__label"
+            - if @minimum_password_length
+              %span
+                (#{@minimum_password_length}文字以上)
+            %span.required 必須
+          .field.user-password-1-foot
+            = f.password_field :password, autocomplete: "password", class: "user-password-1-foot__input", placeholder: "Password(At least 6 characters)"
+        .user-password-2
+          .field.user-password-2-head
+            = f.label :password_confirmation, class: "user-password-2-head__label"
+            %span.required 必須
+          .field.user-password-2-foot
+            = f.password_field :password_confirmation, autocomplete: "password", class: "user-password-2-foot__input", placeholder: "Password(Re-enter)"
+        .actions.info-registration
+          = f.submit "登録", class: "info-registration__btn"

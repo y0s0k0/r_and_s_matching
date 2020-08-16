@@ -1,0 +1,68 @@
+.card-wrapper
+  = render "shared/header"
+  %main.card-main
+    .payment
+      %p.payment-description
+        依頼の投稿/請負前に支払い情報の登録をお願いします。
+    .card-form
+      .available-brand
+        .available-brand__head
+          %p.card-description
+            下記のカードが利用可能です。
+        .available-brand__foot
+          .brand-logo.brand-logo--visa
+            = image_tag "visa.png", class: "brand-logo-img brand-logo-img--visa"
+          .brand-logo.brand-logo--master-card
+            = image_tag "master-card.png", class: "brand-logo-img brand-logo-img--master-card"
+          .brand-logo.brand-logo--saison-card
+            = image_tag "saison-card.png", class: "brand-logo-img brand-logo-img--saison-card"
+          .brand-logo.brand-logo--jcb
+            = image_tag "jcb.png", class: "brand-logo-img brand-logo-img--jcb"
+          .brand-logo.brand-logo--american-express
+            = image_tag "american-express.png", class: "brand-logo-img brand-logo-img--american-express"
+          .brand-logo.brand-logo--diners-club
+            = image_tag "diners-club.png", class: "brand-logo-img brand-logo-img--diners-club"
+          .brand-logo.brand-logo--discover
+            = image_tag "discover.png", class: "brand-logo-img brand-logo-img--discover"
+      .card-info
+        = form_with url: cards_path, method: "post", id: "card-input" do |f|
+          .card-info__head
+            .card-items
+              .card-items__left
+                = f.label :card_number, class: "card-item" do
+                  カード番号
+                  %span.required 必須
+              .card-items__right
+                = f.text_field :card_number, placeholder: "0000111122223333", class:"card-input-text", id: "card_number"
+            .card-items
+              .card-items__left
+                = f.label :customer_name, class: "card-item" do
+                  カード名義
+                  %span.required 必須
+              .card-items__right
+                = f.text_field :customer_name, placeholder: "TARO TANAKA", class:"card-input-text", id: "customer_name"
+            .card-items
+              .card-items__left
+                %p.card-item
+                  有効期限
+                  %span.required 必須
+              .card-items__right
+                .card-exp
+                  = f.select :exp_month, [["01", 1],["02", 2],["03", 3],["04", 4],["05", 5],["06", 6],["07", 7],["08", 8],["09", 9],["10", 10],["11", 11],["12", 12]], {}, class: "card-input-sct", id: "exp_month"
+                  = f.label :exp_month, "月 /", class: "card-item"
+                .card-exp
+                  = f.select :exp_year, [["20", 2020], ["21", 2021], ["22", 2022], ["23", 2023], ["24", 2024], ["25", 2025], ["26", 2026], ["27", 2027], ["28", 2028], ["29", 2029]], {}, class: "card-input-sct", id: "exp_year"
+                  = f.label :exp_year, "年", class: "card-item"
+            .card-items
+              .card-items__left
+                = f.label :security_code, class: "card-item" do
+                  セキュリティーコード
+                  %span.required 必須
+              .card-items__right
+                = f.text_field :security_code, class: "card-input-text", id: "security_code"
+          .card-info__foot
+            .card-btn-form
+              .card-btn-form__left
+                = link_to "戻る", root_path, class: "card-input-btn card-input-btn--cancel"
+              .card-btn-form__right
+                = f.submit "登録", class: "card-input-btn card-input-btn--registration", id: "registration-form"

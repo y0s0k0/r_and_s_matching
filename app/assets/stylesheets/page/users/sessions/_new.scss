@@ -1,0 +1,97 @@
+.session-wrapper {
+  background-image: url(background-image.jpg);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding-top: 54.54%;
+  position: relative;
+  
+}
+
+.center-container {
+  background-color: rgba(45, 145, 123, 0.8);
+  border-radius: 10px;
+  left: 50%;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.login-container {
+  display: inline-block;
+}
+
+.login-title {
+  border-bottom: 1px solid white;
+  color: white;
+  font-size: 24px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  width: 100%;
+}
+
+.login-form {
+  margin: 0 25px 25px;
+  &__email {
+    margin-top: 20px;
+  }
+  &__password {
+    margin-top: 20px;
+  }
+  &__test-user {
+    margin-top: 8px;
+    color: white;
+  }
+  &__btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
+.login-label {
+  color: white;
+}
+
+.login-input {
+  @include input-form(30px, 350px);
+}
+
+.login-btn {
+  @include top-btn-form(#ffffc5);
+}
+
+.links-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  &__session {
+    margin-top: 10px;
+  }
+  &__registration {
+    @include top-btn-form(#1077F8);
+    color: white;
+  }
+  &__password {
+    margin-top: 10px;
+  }
+  &__confirmation {
+    margin-top: 10px;
+  }
+  &__unlock {
+    margin-top: 10px;
+  }
+  &__authorize {
+    margin-top: 10px;
+  }
+}
+
+.app-title {
+  font-size: 50px;
+  text-align: center;
+}

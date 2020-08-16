@@ -1,0 +1,113 @@
+.card-main {
+  @include main-layout();
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment {
+  border-bottom: 1px solid black;
+  font-size: 18px;
+  justify-content: center;
+}
+
+.card-form {
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.available-brand {
+  background-color: #F2F2F2;
+  padding: 20px;
+  &__foot {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+}
+
+.brand-logo-img {
+  height: auto;
+  width: 50px;
+}
+
+.card-info {
+  border-top: 1px solid white;
+  &__head {
+    background-color: #F2F2F2;
+    padding: 5px;
+  }
+}
+
+.card-items {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  &__left {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 220px;
+  }
+  &__right {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 40px;
+    width: 200px;
+  }
+}
+
+.card-item {
+  align-items: center;
+  display: flex;
+  margin-left: 5px;
+}
+
+.card-exp {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.card-exp:nth-child(2) {
+  margin-left: 10px;
+}
+
+.card-input-text {
+  @include input-form(30px, 350px);
+  margin-top: 0;
+}
+
+.card-input-sct {
+  appearance: none;
+  background-image: url(arrow_pull-down.png);
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 12px 10px;
+  border: 1px solid #737373;
+  cursor: pointer;
+  font-size: 15px;
+  height: 30px;
+  padding-left: 8px;
+  width: 60px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+.card-btn-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding: 0 10px;
+  &__right {
+    margin-left: 100px;
+  }
+}
+
+.card-input-btn {
+  &--registration {
+    @include btn-form(#FD0100, 17px, 40px, 150px)
+  }
+  &--cancel {
+    @include btn-form(#1077F8, 17px, 40px, 150px)
+  }
+}

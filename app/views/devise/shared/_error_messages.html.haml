@@ -1,0 +1,14 @@
+- if model.errors.any?
+  .user-data-alert
+    .alert-head
+      .alert-head_left
+        = image_tag "alert-mark.png", class: "alert-mark"
+      .alert-head_right
+        %h2.alert-title
+          入力内容に誤りがあります。(#{model.errors.count}箇所)
+    .alert-foot
+      .error-details
+        %ul.error-list
+          - model.errors.full_messages.each do |message|
+            %li.error-item
+              = message

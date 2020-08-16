@@ -1,0 +1,3 @@
+.list-back-btn {
+  @include btn-form($b-color: #1E344C, $height:30px, $width: 200px);
+}

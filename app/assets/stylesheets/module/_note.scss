@@ -1,0 +1,7 @@
+.optional {
+  @include note(#979797);
+}
+
+.required {
+  @include note(red);
+}

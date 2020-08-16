@@ -1,0 +1,48 @@
+- if(message.user_id == current_user.id)
+  .my-container.message-margin{data: {message_id: "#{message.id}", user_id: "#{message.user_id}"}}
+    .my-message
+      .my-message-head
+        .my-message-head__picture
+          - if message.picture.present?
+            = link_to message.picture.url, data: {lightbox: "picture-#{message.id}"} do
+              = image_tag message.picture.url, class: "my-pic-link"
+        .my-message-head__text
+          - if message.text.present?
+            %p
+              = message.text
+      .my-message-foot
+        %p
+          = l(message.created_at, format: :default)
+    .my-info
+      .my-info__avatar
+        - if message.user.avatar.present?
+          = image_tag message.user.avatar.url, class: "avatar-original"
+        - else
+          = image_tag "avatar-image.png", class: "avatar-default"
+      .my-info__nickname
+        %p
+          = message.user.nickname
+- else
+  .partner-container.message-margin{data: {message_id: "#{message.id}", user_id: "#{message.user_id}"}}
+    .partner-info
+      .partner-info__avatar
+        - if message.user.avatar.present?
+          = image_tag message.user.avatar.url, class: "avatar-original"
+        - else
+          = image_tag "avatar-image.png", class: "avatar-default"
+      .partner-info__nickname
+        %p
+          = message.user.nickname
+    .partner-message
+      .partner-message-head
+        .partner-message-head__text
+          - if message.text.present?
+            %p
+              = message.text
+        .partner-message-head__picture
+          - if message.picture.present?
+            = link_to message.picture.url, data: {lightbox: "picture-#{message.id}"} do
+              = image_tag message.picture.url, class: "partner-pic-link"
+      .partner-message-foot
+        %p
+          = l(message.created_at, format: :default)

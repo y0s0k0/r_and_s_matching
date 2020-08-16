@@ -1,0 +1,51 @@
+.request-show-wrapper
+  = render "shared/header"
+  %main.request-show-main
+    .order-confirm
+      %h2.order-confirm-title 以下の内容で依頼を受けてもよろしいですか？
+    .request-list
+      .request-show-container
+        .request-container-left.client-info
+          .client-info__avatar
+            - if @request.client.avatar.present?
+              = image_tag @request.client.avatar.url, class: "avatar-original"
+            - else
+              = image_tag "avatar-image.png", class: "avatar-default"
+          .client-info__name
+            %p
+              = @request.client.nickname
+        .request-container-right
+          .request-info-head
+            .request-info-head__left
+              .request-title
+                %p.request-title-inner
+                  タイトル：
+                  = @request.title
+              .request-content
+                %p.request-content-inner
+                  依頼内容：
+                  %br
+                    = @request.content
+            .request-info-head__right
+              .request-img
+                - @request.posts.each_with_index do |post, index|
+                  - if post.image.present?
+                    = link_to post.image.url, class: "img-link", data: {lightbox: "image-#{index}"} do
+                      = image_tag @request.posts[index].image.url, class: "request-img__#{index}"
+                - (3 - @request.posts.length).times do |index|
+                  = image_tag "no_image.jpg", class: "request-img__#{@request.posts.length + index}"
+          .request-info-foot
+            .request-info-foot__left
+              %p.reward-info
+                報酬：￥#{@request.reward.to_s(:delimited)}
+          .other-info
+            .other-info__left
+              - @request.tag_list.each do |tag|
+                %p.request-tag
+                  = "##{tag}"
+            .other-info__right
+              %p.date-info
+                = l(@request.created_at, format: :default)
+    .choices-container
+      = link_to "戻る", root_path, class: "choices-container__back"
+      = link_to "受ける", request_path(request: {type: "show"}), method: "patch", class: "choices-container__contract", data: {confirm: "依頼を受けてもよろしいですか？"}

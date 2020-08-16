@@ -1,0 +1,45 @@
+.cancellation-application-main {
+  @include main-layout();
+}
+
+.cancellation-application-main-message {
+  margin-top: 100px;
+  &__head {
+    display: flex;
+    font-size: 35px;
+    font-weight: bold;
+    justify-content: center;
+    padding-bottom: 8px;
+  }
+  &__foot {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+  } 
+}
+
+.cancellation-application-message {
+  border-bottom: 2px solid #979797;
+  padding: 0 30px;
+}
+
+.cancellation-application-sub {
+  font-size: 18px;
+}
+
+.cancellation-application-btn-form {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.cancellation-application-btn {
+  &--decline {
+    @include btn-form($b-color: #1077F8, $height:40px, $width: 150px);
+  }
+  &--accept {
+    @include btn-form($b-color: #e42c64, $height:40px, $width: 150px);
+    margin-left: 100px;
+  }
+}

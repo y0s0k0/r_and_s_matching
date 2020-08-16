@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title PortfolioApp
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    %link{rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css", integrity: "sha256-tBxlolRHP9uMsEFKVk+hk//ekOlXOixLKvye5W2WR5c=", crossorigin: "anonymous"}
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{src: "https://kit.fontawesome.com/cc8fd85311.js", crossorigin: "anonymous"}
+  %body
+    = yield
+    %script{src: "https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js", integrity: "sha256-CtKylYan+AJuoH8jrMht1+1PMhMqrKnB8K5g012WN5I=", crossorigin: "anonymous"}
