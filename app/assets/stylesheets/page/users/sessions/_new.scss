@@ -1,5 +1,5 @@
 .session-wrapper {
-  background-image: url(background-image.jpg);
+  background-image: image-url("background-image.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,6 @@
   justify-content: center;
   padding-top: 54.54%;
   position: relative;
-  
 }
 
 .center-container {

@@ -11,19 +11,19 @@
             下記のカードが利用可能です。
         .available-brand__foot
           .brand-logo.brand-logo--visa
-            = image_tag "visa.png", class: "brand-logo-img brand-logo-img--visa"
+            = image_tag asset_path("visa.png"), class: "brand-logo-img brand-logo-img--visa"
           .brand-logo.brand-logo--master-card
-            = image_tag "master-card.png", class: "brand-logo-img brand-logo-img--master-card"
+            = image_tag asset_path("master-card.png"), class: "brand-logo-img brand-logo-img--master-card"
           .brand-logo.brand-logo--saison-card
-            = image_tag "saison-card.png", class: "brand-logo-img brand-logo-img--saison-card"
+            = image_tag asset_path("saison-card.png"), class: "brand-logo-img brand-logo-img--saison-card"
           .brand-logo.brand-logo--jcb
-            = image_tag "jcb.png", class: "brand-logo-img brand-logo-img--jcb"
+            = image_tag asset_path("jcb.png"), class: "brand-logo-img brand-logo-img--jcb"
           .brand-logo.brand-logo--american-express
-            = image_tag "american-express.png", class: "brand-logo-img brand-logo-img--american-express"
+            = image_tag asset_path("american-express.png"), class: "brand-logo-img brand-logo-img--american-express"
           .brand-logo.brand-logo--diners-club
-            = image_tag "diners-club.png", class: "brand-logo-img brand-logo-img--diners-club"
+            = image_tag asset_path("diners-club.png"), class: "brand-logo-img brand-logo-img--diners-club"
           .brand-logo.brand-logo--discover
-            = image_tag "discover.png", class: "brand-logo-img brand-logo-img--discover"
+            = image_tag asset_path("discover.png"), class: "brand-logo-img brand-logo-img--discover"
       .card-info
         = form_with url: cards_path, method: "post", id: "card-input" do |f|
           .card-info__head
