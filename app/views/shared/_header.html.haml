@@ -3,7 +3,7 @@
   .header__head
     .header-logo
       = link_to root_path, class: "header-logo-container" do
-        = image_tag "app_logo.png", class: "app-logo"
+        = image_tag asset_path("app_logo.png"), class: "app-logo"
     .header-menu
       - if user_signed_in?
         %p.header-menu__user
