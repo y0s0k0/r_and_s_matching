@@ -1,8 +1,9 @@
-app_path = File.expand_path('../../', __dir__)
+app_path = File.expand_path('../../', ____)
 
 worker_processes 1
 
-working_directory "#{app_path}/current"
+working_directory "/var/www/r_and_s_matching/current"
+# working_directory "#{app_path}/current"
 
 pid "#{app_path}/shared/tmp/pids/unicorn.pid"
 
