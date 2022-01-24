@@ -3,7 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server '35.75.64.203', user: 'test_user', roles: %w{app db web}
+server '35.75.64.203', user: 'y0s0k0', roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
@@ -43,11 +43,12 @@ set :unicorn_rack_env, "production"
 #
 # Global options
 # --------------
-# set :ssh_options, {
-#   keys: [File.expand_path('~/.ssh/portfolio.pem)')]
-  # forward_agent: false,
-  # auth_methods: %w(password)
-# }
+set :ssh_options, {
+  port: 10022,
+  keys: [File.expand_path('~/.ssh/portfolio (1).pem')],
+  forward_agent: true,
+  auth_methods: %w(publickey)
+}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
