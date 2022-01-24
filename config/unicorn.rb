@@ -1,4 +1,4 @@
-app_path = File.expand_path('../../', ____)
+app_path = File.expand_path('../../', __dir__)
 
 worker_processes 1
 
