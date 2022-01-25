@@ -1,16 +1,16 @@
-app_path = File.expand_path('../../../', __FILE__)
+app_path = File.expand_path('../../', __FILE__)
 
 worker_processes 1
 
-working_directory "#{app_path}/current"
+working_directory "#{app_path}/r_and_s_matching/current"
 
-pid "#{app_path}/shared/tmp/pids/unicorn.pid"
+pid "#{app_path}/r_and_s_matching/shared/tmp/pids/unicorn.pid"
 
-listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
+listen "#{app_path}/r_and_s_matching/shared/tmp/sockets/unicorn.sock"
 
-stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
+stderr_path "#{app_path}/r_and_s_matching/shared/log/unicorn.stderr.log"
 
-stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
+stdout_path "#{app_path}/r_and_s_matching/shared/log/unicorn.stdout.log"
 
 timeout 60
 
